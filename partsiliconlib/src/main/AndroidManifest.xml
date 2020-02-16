@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.partsilicon.partsiliconlib" >
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application>
+        <activity android:name="com.partsilicon.partsiliconlib.FeedBackActivity" android:theme="@style/AppTheme.Dialog"/>
+    </application>
+</manifest>

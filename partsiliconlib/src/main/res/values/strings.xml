@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PartSiliconLib</string>
+    <string name="noConnection">ارتباط اینترنت برقرار نیست، لطفا اتصال خود را چک نمایید</string>
+    <string name="btnRetry">سعی مجدد</string>
+    <string name="btnCancel">انصراف</string>
+    <string name="feedback">بازخورد</string>
+    <string name="feedbackMsg">اگه از برنامه راضی بودی، با یک نظر پر ستاره از ما حمایت کن</string>
+    <string name="feedbackOk">باشه😊</string>
+    <string name="feedbackNo">راضی نبودم😔</string>
+    <string name="feedbackTellUs">لطفا علت نارضایتی رو برای ما بفرست</string>
+</resources>
