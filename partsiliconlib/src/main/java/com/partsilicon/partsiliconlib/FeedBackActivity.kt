@@ -28,6 +28,11 @@ class FeedBackActivity : AppCompatActivity() {
                 val intent = Intent(Intent.ACTION_VIEW)
                 intent.data = Uri.parse("myket://comment?id=" + getPackageName())
                 startActivity(intent)
+            }else if(market == "charkhoneh")
+            {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse("jhoobin://comment?q=" + getPackageName())
+                startActivity(intent)
             }else
                 Toast.makeText(this , "market not defined",Toast.LENGTH_LONG).show()
             finish()

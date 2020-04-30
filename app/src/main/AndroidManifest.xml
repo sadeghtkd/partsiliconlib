@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data android:name="support_email" android:value="partsilicon@gmail.com" />
-        <meta-data android:name="market" android:value="myket" />
+        <meta-data android:name="market" android:value="charkhoneh" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
