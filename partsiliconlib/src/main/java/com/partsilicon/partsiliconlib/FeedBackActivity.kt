@@ -46,7 +46,7 @@ class FeedBackActivity : AppCompatActivity() {
                 Toast.makeText(this , "support_email not defined",Toast.LENGTH_LONG).show()
             val addresses = arrayOf(supportEmail?.toString() )
             intent.putExtra(Intent.EXTRA_EMAIL, addresses)
-            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.feedbackNo))
+            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.feedbackNo)+packageName)
             if (intent.resolveActivity(packageManager) != null) {
                 Toast.makeText(this, getString(R.string.feedbackTellUs) , Toast.LENGTH_LONG).show()
                 startActivity(intent)
