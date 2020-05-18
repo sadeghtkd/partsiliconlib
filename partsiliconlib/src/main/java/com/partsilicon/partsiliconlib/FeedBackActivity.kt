@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.activity_feed_back.*
 import android.content.pm.PackageManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.partsilicon.partsiliconlib.classes.getMarketName
 import com.partsilicon.partsiliconlib.utils.SharedPreferencesUtility
 
 class FeedBackActivity : AppCompatActivity() {
@@ -17,7 +18,7 @@ class FeedBackActivity : AppCompatActivity() {
         val ai = packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
         btnOk.setOnClickListener{
 
-            val market = ai.metaData.get("market")?.toString()
+            val market = getMarketName(this) //ai.metaData.get("market")?.toString()
             if(market == "bazaar") {
                 val intent = Intent(Intent.ACTION_EDIT)
                 intent.data = Uri.parse("bazaar://details?id=" + getPackageName())

@@ -8,6 +8,6 @@ class Push{
      * Send Data Push to Every App by its main package name
      */
     fun subscribeToPush(context: Context){
-        FirebaseMessaging.getInstance().subscribeToTopic(context.packageName)
+        FirebaseMessaging.getInstance().subscribeToTopic(context.packageName+"_"+getMarketName(context))
     }
 }
