@@ -22,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //setTitle( UtilsKt.ToPersianNumbers("12345"));
+        setTitle( String.valueOf( UtilsKt.GetVersionCode(this)));
         //startActivity(new Intent(this , NotifListActivity.class));
+
     }
 
     @Override

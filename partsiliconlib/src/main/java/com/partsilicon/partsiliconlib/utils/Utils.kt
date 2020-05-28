@@ -9,6 +9,7 @@ import android.os.Build
 import android.util.Log
 import com.partsilicon.partsiliconlib.notification.ActionTypes
 import com.partsilicon.partsiliconlib.notification.model.Notif
+import java.lang.Exception
 
 fun GetAboutUSPage(context: Context):String{
         var url = "http://partsilicon.com/about?pck=${context.packageName}&v=${GetVersionCode(context)}"
@@ -28,16 +29,16 @@ fun GetAboutUSPage(context: Context):String{
         return ver
     }
 
-    fun GetVersionCode(context: Context): Int {
-        var verCode = 0
+    fun GetVersionCode(context: Context): Long {
+        var verCode = 0L
         val packName = context.packageName
         try {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                verCode = context.packageManager.getPackageInfo(packName, 0).longVersionCode as Int
+                verCode = context.packageManager.getPackageInfo(packName, 0).longVersionCode
             }else
-                verCode = context.packageManager.getPackageInfo(packName, 0).versionCode
-        } catch (e: PackageManager.NameNotFoundException) {
+                verCode =  context.packageManager.getPackageInfo(packName, 0).versionCode.toLong()
+        } catch (e: Exception) {
             e.printStackTrace()
         }
 
