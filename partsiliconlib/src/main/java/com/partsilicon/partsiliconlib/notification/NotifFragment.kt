@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.Toast
 import com.partsilicon.partsiliconlib.R
 import com.partsilicon.partsiliconlib.notification.db.AppDatabase
 import com.partsilicon.partsiliconlib.notification.db.saveNotifToDb
@@ -89,6 +90,10 @@ class NotifFragment : Fragment() {
                         {
                             saveNotifToDb(context,false, response.body()?.results!! )
                             adapter = NotifRecyclerViewAdapter(response.body()?.results?.reversed() ?: ArrayList<Notif>(), listener)
+                            if(response.body()?.results.isNullOrEmpty()) {
+                                Toast.makeText(activity, getString(R.string.notif_empty) , Toast.LENGTH_LONG).show()
+                                activity?.finish()
+                            }
                         }
                     }
                 })

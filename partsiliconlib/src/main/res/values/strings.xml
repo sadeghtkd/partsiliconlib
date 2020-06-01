@@ -19,4 +19,5 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="errInConn">خطا در برقراری ارتباط</string>
     <string name="btnAction">نمایش</string>
+    <string name="notif_empty">اطلاعیه جدیدی ندارید</string>
 </resources>
