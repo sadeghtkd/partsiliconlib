@@ -41,7 +41,7 @@ class NotifRecyclerViewAdapter(
         holder.item_shortDesc.text = item.shortDesc
         holder.btnAction.text = item.buttonLabel
         holder.btnAction.visibility = if(item.actionType == ActionTypes.NO_ACTION.value) View.GONE else View.VISIBLE
-        holder.item_visit_count.text = item.visitCount.toString()
+        //holder.item_visit_count.text = item.visitCount.toString()
         Picasso.get().load(item.picUrl).into(holder.iv_item)
 
         with(holder.btnAction) {
@@ -62,7 +62,7 @@ class NotifRecyclerViewAdapter(
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         val item_title: TextView = mView.item_title
         val item_shortDesc: TextView = mView.item_shortDesc
-        val item_visit_count: TextView = mView.item_visit_count
+        //val item_visit_count: TextView = mView.item_visit_count
         val iv_item: ImageView = mView.iv_item
         val btnAction: Button = mView.btnAction
     }
