@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.partsilicon.partsiliconlib.FeedBackActivity;
+import com.partsilicon.partsiliconlib.WebViewActivity;
 import com.partsilicon.partsiliconlib.notification.NotifListActivity;
 import com.partsilicon.partsiliconlib.utils.SharedPreferencesUtility;
 import com.partsilicon.partsiliconlib.utils.UtilsKt;
@@ -24,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle( String.valueOf( UtilsKt.GetVersionCode(this)));
         //startActivity(new Intent(this , NotifListActivity.class));
-
+        Intent intnt = new Intent(this , WebViewActivity.class);
+        intnt.putExtra("url","https://google.com");
+        intnt.putExtra("title","google.com");
+        startActivity(intnt);
     }
 
     @Override

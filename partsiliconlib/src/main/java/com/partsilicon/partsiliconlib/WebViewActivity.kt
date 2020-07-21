@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_web_view.*
 import android.webkit.JavascriptInterface
 import android.app.Activity
+import android.content.res.Configuration
 import android.net.http.SslError
+import android.os.Build
 import android.webkit.SslErrorHandler
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -22,6 +24,15 @@ class WebViewActivity : AppCompatActivity() {
 
             activity.finish()
         }
+    }
+
+    // Workaround appcompat-1.1.0 bug https://issuetracker.google.com/issues/141132133
+    // Fix webview bug on some Android 5.0 devices
+    override fun applyOverrideConfiguration(overrideConfiguration: Configuration) {
+        if (Build.VERSION.SDK_INT in 21..22) {
+            return
+        }
+        super.applyOverrideConfiguration(overrideConfiguration)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
