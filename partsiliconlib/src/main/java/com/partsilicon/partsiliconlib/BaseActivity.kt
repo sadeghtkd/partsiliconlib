@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import com.partsilicon.partsiliconlib.R
 import com.partsilicon.partsiliconlib.utils.IsInternetAvailable
+import java.lang.Exception
 
 open class BaseActivity : AppCompatActivity(){
 
@@ -17,24 +18,29 @@ open class BaseActivity : AppCompatActivity(){
     private fun  checkInternet(){
         if(!IsInternetAvailable(this))
         {
-            var dlg = AlertDialog.Builder(this)
-            with(dlg){
-                setIcon(AppCompatResources.getDrawable(this@BaseActivity, R.drawable.ic_wifi_off_24dp))
-                setMessage(R.string.noConnection)
-                setPositiveButton(R.string.btnRetry) { dialogInterface, i ->
-                    dialogInterface.dismiss()
-                    if(IsInternetAvailable(this@BaseActivity)) {
-                        recreate()
-                    }else
-                        checkInternet()
+            try {
+                var dlg = AlertDialog.Builder(this)
+                with(dlg){
+                    setIcon(AppCompatResources.getDrawable(this@BaseActivity, R.drawable.ic_wifi_off_24dp))
+                    setMessage(R.string.noConnection)
+                    setPositiveButton(R.string.btnRetry) { dialogInterface, i ->
+                        dialogInterface.dismiss()
+                        if(IsInternetAvailable(this@BaseActivity)) {
+                            recreate()
+                        }else
+                            checkInternet()
 
+                    }
+                    setNegativeButton(R.string.btnCancel){ dialogInterface, i ->
+                        dialogInterface.dismiss()
+                        //finish()
+                    }
+                    show()
                 }
-                setNegativeButton(R.string.btnCancel){ dialogInterface, i ->
-                    dialogInterface.dismiss()
-                    finish()
-                }
-                show()
+            }catch (e:Exception){
+
             }
+
         }
     }
 }
