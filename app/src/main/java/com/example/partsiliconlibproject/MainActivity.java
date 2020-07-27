@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle( String.valueOf( UtilsKt.GetVersionCode(this)));
         //startActivity(new Intent(this , NotifListActivity.class));
-        Intent intnt = new Intent(this , WebViewActivity.class);
+        /*Intent intnt = new Intent(this , WebViewActivity.class);
         intnt.putExtra("url","https://google.com");
         intnt.putExtra("title","google.com");
-        startActivity(intnt);
+        startActivity(intnt);*/
     }
 
     @Override

@@ -9,7 +9,24 @@ import android.os.Build
 import android.util.Log
 import com.partsilicon.partsiliconlib.notification.ActionTypes
 import com.partsilicon.partsiliconlib.notification.model.Notif
+import saman.zamani.persiandate.PersianDateFormat
 import java.lang.Exception
+
+/**
+ * convert input date with yyyy-MM-dd'T'HH:mm:ss.SSSZ format to Shamsi as Y/m/d
+ */
+fun toShamsi( dueDate:String? ):String?
+{
+    val persianDateFormat = PersianDateFormat()
+    var shamsi: String? = null
+    try {
+        val pdformater1 = PersianDateFormat("Y/m/d")
+        shamsi = pdformater1.format(persianDateFormat.parseGrg(dueDate, "yyyy-MM-dd'T'HH:mm:ss.S")).toString()
+        return  shamsi
+    } catch (e: Exception) {
+        return   e.printStackTrace().toString()
+    }
+}
 
 fun GetAboutUSPage(context: Context):String{
         var url = "http://partsilicon.com/about?pck=${context.packageName}&v=${GetVersionCode(context)}"
