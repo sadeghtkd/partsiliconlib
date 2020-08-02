@@ -38,6 +38,7 @@ class FeedBackActivity : AppCompatActivity() {
             }catch (e:Exception){
                 Toast.makeText(this, "مارکت بر روی دستگاه نصب نیست", Toast.LENGTH_LONG).show()
             }
+            SharedPreferencesUtility(this).setIsFirstLaunch()
             finish()
         }
         btnNo.setOnClickListener {
@@ -58,12 +59,17 @@ class FeedBackActivity : AppCompatActivity() {
             }catch (e:Exception){
 
             }
+            SharedPreferencesUtility(this).setIsFirstLaunch()
             finish()
         }
-        SharedPreferencesUtility(this).setIsFirstLaunch()
+
+
+        btnNext.setOnClickListener(){
+
+        }
     }
 
     override fun onBackPressed() {
-
+        finish()
     }
 }

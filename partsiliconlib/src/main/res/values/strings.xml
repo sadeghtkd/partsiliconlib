@@ -5,7 +5,8 @@
     <string name="btnCancel">انصراف</string>
     <string name="feedback">بازخورد</string>
     <string name="feedbackMsg">اگه از برنامه راضی بودی، با نظرت از ما حمایت کن</string>
-    <string name="feedbackOk">باشه😊</string>
+    <string name="feedbackOk"> باشه 😊 </string>
+    <string name="feedbackNext">  بعدا 😐  </string>
     <string name="feedbackNo">راضی نبودم😔</string>
     <string name="feedbackTellUs">لطفا علت نارضایتی رو برای ما بفرست</string>
     <string name="title_activity_notif_list">اطلاعیه ها</string>
