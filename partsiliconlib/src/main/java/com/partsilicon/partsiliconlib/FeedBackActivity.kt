@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.partsilicon.partsiliconlib.classes.getMarketName
 import com.partsilicon.partsiliconlib.utils.SharedPreferencesUtility
 
-class FeedBackActivity : AppCompatActivity() {
+class FeedBackActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +65,7 @@ class FeedBackActivity : AppCompatActivity() {
 
 
         btnNext.setOnClickListener(){
-
+            finish()
         }
     }
 

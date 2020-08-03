@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
+import com.partsilicon.partsiliconlib.BaseActivity;
 import com.partsilicon.partsiliconlib.FeedBackActivity;
 import com.partsilicon.partsiliconlib.WebViewActivity;
 import com.partsilicon.partsiliconlib.notification.NotifListActivity;
@@ -17,7 +18,7 @@ import com.partsilicon.partsiliconlib.utils.UtilsUIKt;
 
 import static com.partsilicon.partsiliconlib.utils.UtilsUIKt.setUnreadActionMenu;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         intnt.putExtra("url","https://google.com");
         intnt.putExtra("title","google.com");
         startActivity(intnt);*/
+
     }
 
     @Override
