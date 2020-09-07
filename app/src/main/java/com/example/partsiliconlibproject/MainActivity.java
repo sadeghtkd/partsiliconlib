@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.partsilicon.partsiliconlib.BaseActivity;
 import com.partsilicon.partsiliconlib.FeedBackActivity;
+import com.partsilicon.partsiliconlib.ItemFragment;
 import com.partsilicon.partsiliconlib.WebViewActivity;
 import com.partsilicon.partsiliconlib.notification.NotifListActivity;
 import com.partsilicon.partsiliconlib.utils.SharedPreferencesUtility;
@@ -18,7 +19,7 @@ import com.partsilicon.partsiliconlib.utils.UtilsUIKt;
 
 import static com.partsilicon.partsiliconlib.utils.UtilsUIKt.setUnreadActionMenu;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements ItemFragment.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,5 +49,10 @@ public class MainActivity extends BaseActivity {
         final View action_notifications = menu.findItem(R.id.action_notifications).getActionView();
         setUnreadActionMenu(this , action_notifications);
         return true;
+    }
+
+    @Override
+    public void onListFragmentInteraction(String item) {
+
     }
 }
