@@ -15,7 +15,7 @@ import android.widget.ProgressBar
 import android.view.View
 
 
-class WebViewActivity : AppCompatActivity() {
+class WebViewActivity : BaseActivity() {
 
     internal inner class JavaScriptInterface(private val activity: Activity) {
 

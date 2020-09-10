@@ -1,16 +1,37 @@
 package com.partsilicon.partsiliconlib
 
-import android.content.Intent
-import android.widget.Toast
+import android.content.Context
+import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
-import com.partsilicon.partsiliconlib.R
 import com.partsilicon.partsiliconlib.utils.IsInternetAvailable
+import io.github.inflationx.calligraphy3.CalligraphyConfig
+import io.github.inflationx.calligraphy3.CalligraphyInterceptor
+import io.github.inflationx.viewpump.ViewPump
+import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import java.lang.Exception
 
 open class BaseActivity : AppCompatActivity(){
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        ViewPump.init(
+                ViewPump.builder()
+                        .addInterceptor(
+                                CalligraphyInterceptor(
+                                        CalligraphyConfig.Builder()
+                                                .setDefaultFontPath("fonts/IranYekan.ttf")
+                                                .build()
+                                )
+                        )
+                        .build()
+        )
+
+    }
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
+    }
     override fun onResume() {
         super.onResume()
         checkInternet()
