@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "488280823720",
+    "firebase_url": "https://maptest2-1025.firebaseio.com",
+    "project_id": "maptest2-1025",
+    "storage_bucket": "maptest2-1025.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488280823720:android:8a8345a7f370952dae6f9d",
+        "android_client_info": {
+          "package_name": "com.example.partsiliconlibproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488280823720-bjg4ubon53s1o1vtg0luejk4l640vjmq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCF54eCZ5I_pgKQKg11iSCKWwK3Wtuk--o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488280823720-bjg4ubon53s1o1vtg0luejk4l640vjmq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488280823720:android:bf7c767e8a70026cae6f9d",
+        "android_client_info": {
+          "package_name": "com.partsilicon.mashhadpollution"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488280823720-bjg4ubon53s1o1vtg0luejk4l640vjmq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCF54eCZ5I_pgKQKg11iSCKWwK3Wtuk--o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488280823720-bjg4ubon53s1o1vtg0luejk4l640vjmq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488280823720:android:16fe7c96a6cccabe",
+        "android_client_info": {
+          "package_name": "ir.androidsoftware.telemember"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488280823720-bjg4ubon53s1o1vtg0luejk4l640vjmq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCF54eCZ5I_pgKQKg11iSCKWwK3Wtuk--o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488280823720-bjg4ubon53s1o1vtg0luejk4l640vjmq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
