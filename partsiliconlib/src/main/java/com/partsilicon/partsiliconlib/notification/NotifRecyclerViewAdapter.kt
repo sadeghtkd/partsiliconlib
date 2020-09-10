@@ -45,6 +45,7 @@ class NotifRecyclerViewAdapter(
         //holder.item_visit_count.text = item.visitCount.toString()
         holder.item_date.text = toShamsi( item.createdAt)
         Picasso.get().load(item.picUrl).into(holder.iv_item)
+        holder.item_longText.text = item.longText
 
         with(holder.btnAction) {
             tag = item
@@ -68,5 +69,6 @@ class NotifRecyclerViewAdapter(
         val iv_item: ImageView = mView.iv_item
         val btnAction: Button = mView.btnAction
         val item_date: TextView = mView.item_date
+        val item_longText: TextView = mView.tvLongText
     }
 }
