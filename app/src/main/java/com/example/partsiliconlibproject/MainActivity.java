@@ -27,7 +27,8 @@ public class MainActivity extends BaseActivity implements ItemFragment.OnListFra
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle( String.valueOf( UtilsKt.GetVersionCode(this)));
-        startActivity(new Intent(this , ReferalCodeActivity.class ));
+        if (!new SharedPreferencesUtility(this).isRefCodeEntered())
+            startActivity(new Intent(this , ReferalCodeActivity.class ));
         /*Intent intnt = new Intent(this , WebViewActivity.class);
         intnt.putExtra("url","https://google.com");
         intnt.putExtra("title","google.com");

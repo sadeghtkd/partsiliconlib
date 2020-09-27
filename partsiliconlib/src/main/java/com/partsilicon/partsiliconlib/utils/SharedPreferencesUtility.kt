@@ -7,6 +7,7 @@ import android.content.Context.MODE_PRIVATE
 class SharedPreferencesUtility(private val context: Context) {
     private val preferenceFileKey = "PsiLib"
     private val preferenceIsFirstLaunchKey = "FirstLaunch"
+    private val preferenceIsRefCodeEnteredKey = "RefCodeEntered"
 
     fun setUnreadCount(count:Int) {
         val editor = context.getSharedPreferences(preferenceFileKey, MODE_PRIVATE).edit()
@@ -30,5 +31,15 @@ class SharedPreferencesUtility(private val context: Context) {
                 .getBoolean(preferenceIsFirstLaunchKey, true)
     }
 
+    fun setIsRefCodeEntered() {
+        val editor = context.getSharedPreferences(preferenceFileKey, MODE_PRIVATE).edit()
+        editor.putBoolean(preferenceIsRefCodeEnteredKey, true)
+        editor.apply()
+    }
+
+    fun isRefCodeEntered(): Boolean {
+        return context.getSharedPreferences(preferenceFileKey, MODE_PRIVATE)
+                .getBoolean(preferenceIsRefCodeEnteredKey, false)
+    }
 
 }

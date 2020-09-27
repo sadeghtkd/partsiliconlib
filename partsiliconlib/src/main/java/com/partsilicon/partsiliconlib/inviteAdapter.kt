@@ -63,7 +63,7 @@ class inviteAdapter(
         holder.ib_share.setOnClickListener(){
 
             val intent = Intent(Intent.ACTION_SEND)
-            intent.putExtra(Intent.EXTRA_TEXT, item?.getSendingMessage() + "\n" + item?.getCode() ) // getString(R.string.refCodeShare, General.MainURL + "TeleDl?market=" + BuildConfig.MARKET_NO,tvYourCode.text))
+            intent.putExtra(Intent.EXTRA_TEXT, item?.getSendingMessage() + "\n" + item?.getCode()+"\n"+item?.getLink() ) // getString(R.string.refCodeShare, General.MainURL + "TeleDl?market=" + BuildConfig.MARKET_NO,tvYourCode.text))
             intent.setType("text/plain")
             val shareIntent = Intent.createChooser(intent, null)
             context.startActivity(shareIntent)
