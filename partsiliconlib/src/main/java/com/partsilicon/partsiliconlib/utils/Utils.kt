@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.util.Log
 import com.partsilicon.partsiliconlib.notification.ActionTypes
+import com.partsilicon.partsiliconlib.notification.NotifListActivity
 import com.partsilicon.partsiliconlib.notification.model.Notif
 import saman.zamani.persiandate.PersianDateFormat
 import java.lang.Exception
@@ -72,6 +73,8 @@ fun GetAboutUSPage(context: Context):String{
             intent = (Intent(Intent.ACTION_VIEW , Uri.parse(item.action)))
         }else if(item?.actionType == ActionTypes.OPEN_ACTIVITY.value){
             intent = (Intent(context , context.classLoader.loadClass(item.action)))
+        }else if(item?.actionType == ActionTypes.NO_ACTION.value){
+            intent = (Intent(context , NotifListActivity::class.java))
         }
         return intent
     }

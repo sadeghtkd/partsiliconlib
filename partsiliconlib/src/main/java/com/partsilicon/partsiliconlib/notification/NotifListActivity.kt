@@ -12,7 +12,7 @@ import com.partsilicon.partsiliconlib.utils.getItemActionIntent
 import kotlinx.android.synthetic.main.activity_notif_list.*
 import java.lang.Exception
 
-class NotifListActivity : AppCompatActivity(), NotifFragment.OnListFragmentInteractionListener {
+class NotifListActivity : BaseActivity(), NotifFragment.OnListFragmentInteractionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
