@@ -34,9 +34,11 @@ class App {
     @SerializedName("link")
     @Expose
     private var link: String? = null
-
-    fun getId(): String? {
-        return id
+    @SerializedName("code")
+    @Expose
+    private var code: String? = null
+    fun getcode(): String? {
+        return code
     }
 
     fun setId(id: String?) {
@@ -113,5 +115,12 @@ class App {
 
     fun setLink(link: String?) {
         this.link = link
+    }
+    fun getCode(): String? {
+        return code
+    }
+
+    fun setCode(code: String?) {
+        this.code = code
     }
 }

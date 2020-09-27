@@ -3,21 +3,24 @@
     package="com.partsilicon.partsiliconlib">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
 
     <application>
+        <activity android:name=".ReferalCodeActivity"
+            android:theme="@style/AppTheme.Dialog"></activity>
         <activity
             android:name=".notification.NotifListActivity"
             android:label="@string/title_activity_notif_list"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".FeedBackActivity"
-            android:theme="@style/AppTheme.Dialog" >
+            android:theme="@style/AppTheme.Dialog"></activity>
 
-    </activity>
-        <service android:name="com.partsilicon.partsiliconlib.services.MyFirebaseMessagingService" android:exported="false">
+        <service
+            android:name=".services.MyFirebaseMessagingService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

@@ -4,7 +4,9 @@ import android.app.Application;
 
 import com.partsilicon.partsiliconlib.classes.Push;
 
-public class MyApp extends Application {
+import androidx.multidex.MultiDexApplication;
+
+public class MyApp extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();

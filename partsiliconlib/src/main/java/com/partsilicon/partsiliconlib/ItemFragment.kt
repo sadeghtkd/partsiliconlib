@@ -1,20 +1,25 @@
 package com.partsilicon.partsiliconlib
 
+import android.Manifest
 import android.content.Context
+import android.content.Context.TELEPHONY_SERVICE
+import android.content.pm.PackageManager
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.telephony.TelephonyManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.partsilicon.partsiliconlib.pojo.App
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.partsilicon.partsiliconlib.classes.Setting
 import com.partsilicon.partsiliconlib.pojo.AppsObj
 import com.partsilicon.partsiliconlib.viewmodels.AppsViewModel
-import java.lang.Exception
 
 
 /**
@@ -39,22 +44,28 @@ class ItemFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_invite_item_list, container, false)
-
+        val view1 = inflater.inflate(R.layout.fragment_invite_item_list, container, false)
+        val listInvite = view1.findViewById<RecyclerView>(R.id.listInvite)
 
         viewModel = ViewModelProviders.of(requireActivity()).get(AppsViewModel::class.java)
 
+
+
         // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
+        if (listInvite is RecyclerView) {
+            with(listInvite) {
                 layoutManager = when {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
                 try {
-                    viewModel.getApps(context)
+
+                    var set : Setting = Setting()
+
+                    var imei =  set.getIMEI(context)
+                     viewModel.getApps(context , context.packageName.toString()  , imei )
                     viewModel.AppsList?.observe(viewLifecycleOwner,  Observer<AppsObj>{
-                        adapter = inviteAdapter(it , listener)
+                        adapter = inviteAdapter(context ,  it , listener)
                     })
                 }catch (e:Exception)
                 {
@@ -69,7 +80,7 @@ class ItemFragment : Fragment() {
                 adapter = inviteAdapter(A , listener)*/
             }
         }
-        return view
+        return view1
     }
 
     override fun onAttach(context: Context) {

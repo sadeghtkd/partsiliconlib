@@ -21,4 +21,13 @@
     <string name="errInConn">خطا در برقراری ارتباط</string>
     <string name="btnAction">نمایش</string>
     <string name="notif_empty">اطلاعیه جدیدی ندارید</string>
+    <string name="yourAward">جایزه شما</string>
+    <string name="freindGift">هدیه دوستت</string>
+    <string name="InviteMessage">با معرفی اپ های زیر به دوستات، جایزه بگیر و یه هدیه هم به دوستت بده</string>
+    <string name="refText">کد معرف را وارد کنید</string>
+    <string name="oklabel">تایید</string>
+    <string name="noref">ندارم</string>
+    <string name="enterCode">اگر کد معرف دارید</string>
+    <string name="msgsuccess">کد معرف تایید گردید هدیه شما تقدیم می گردد</string>
+    <string name="msgfail">کد معرف صحیح نیست</string>
 </resources>
