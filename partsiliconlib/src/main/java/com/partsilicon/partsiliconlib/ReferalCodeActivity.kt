@@ -17,10 +17,14 @@ import retrofit2.Response
 
 class ReferalCodeActivity : BaseActivity() {
 
+    var userId:String =""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_referal_code)
 
+        userId = intent.getStringExtra("userId")
+        if(userId.isNullOrEmpty() )
+            Toast.makeText(this ,"ReferalCodeActivity: UserId is empty" , Toast.LENGTH_LONG).show()
         btn_ok.setOnClickListener(){
             //viewModel = ViewModelProviders.of (ReferalCodeActivity()).get(AppsViewModel::class.java)
             Invitation(this , txt_code.text.toString() , Setting().getIMEI(this))
@@ -47,7 +51,7 @@ class ReferalCodeActivity : BaseActivity() {
                 }
             }
         }
-        AppsWebService(context).Invitation(code , imei ,listener )
+        AppsWebService(context).Invitation(code , imei , userId , listener  )
     }
 
 }

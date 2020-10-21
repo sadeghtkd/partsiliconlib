@@ -18,7 +18,7 @@ class AppsViewModel : ViewModel() {
     val AppsList = MutableLiveData <AppsObj>()
     val invited = MutableLiveData<InviteRes>()
 
-    fun getApps(context:Context , hostApp:String , imei:String ){
+    fun getApps(context:Context , hostApp:String , imei:String , userHostId:String ){
 
         val listener = object  : MyCallback<AppsObj>(context){
             override fun onResponse(call: Call<AppsObj>, response: Response<AppsObj>) {
@@ -26,7 +26,7 @@ class AppsViewModel : ViewModel() {
                     AppsList.value = response.body()
             }
         }
-        AppsWebService(context).getAppList(hostApp , imei ,  listener)
+        AppsWebService(context).getAppList(hostApp , imei ,userHostId,  listener)
     }
 
 

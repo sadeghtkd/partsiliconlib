@@ -29,8 +29,7 @@ import com.partsilicon.partsiliconlib.viewmodels.AppsViewModel
  */
 class ItemFragment : Fragment() {
 
-    // TODO: Customize parameters
-    private var columnCount = 1
+    private var userId = ""
 
     private var listener: OnListFragmentInteractionListener? = null
     private lateinit var viewModel : AppsViewModel
@@ -38,7 +37,7 @@ class ItemFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
+            userId = it.getString(ARG_UserID , "")
         }
     }
 
@@ -54,16 +53,13 @@ class ItemFragment : Fragment() {
         // Set the adapter
         if (listInvite is RecyclerView) {
             with(listInvite) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
+                layoutManager = LinearLayoutManager(context)
                 try {
 
                     var set : Setting = Setting()
 
                     var imei =  set.getIMEI(context)
-                     viewModel.getApps(context , context.packageName.toString()  , imei )
+                     viewModel.getApps(context , context.packageName.toString()  , imei , userId)
                     viewModel.AppsList?.observe(viewLifecycleOwner,  Observer<AppsObj>{
                         adapter = inviteAdapter(context ,  it , listener)
                     })
@@ -115,15 +111,13 @@ class ItemFragment : Fragment() {
 
     companion object {
 
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
+        const val ARG_UserID = "userId"
 
-        // TODO: Customize parameter initialization
         @JvmStatic
-        fun newInstance(columnCount: Int) =
+        fun newInstance(userId: String) =
                 ItemFragment().apply {
                     arguments = Bundle().apply {
-                        putInt(ARG_COLUMN_COUNT, columnCount)
+                        putString(ARG_UserID, userId)
                     }
                 }
     }

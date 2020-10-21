@@ -1,6 +1,7 @@
 package com.example.partsiliconlibproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,6 +34,9 @@ public class MainActivity extends BaseActivity implements ItemFragment.OnListFra
         intnt.putExtra("url","https://google.com");
         intnt.putExtra("title","google.com");
         startActivity(intnt);*/
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.fragment_container, ItemFragment.newInstance("09157690095")).commit();
 
     }
 
