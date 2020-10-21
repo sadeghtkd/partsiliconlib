@@ -38,6 +38,9 @@ public class MainActivity extends BaseActivity implements ItemFragment.OnListFra
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.fragment_container, ItemFragment.newInstance("09157690095")).commit();
 
+        Intent refCodeIntent = new Intent(this, ReferalCodeActivity.class);
+        refCodeIntent.putExtra("userId" , "09157690095");
+        startActivity(refCodeIntent);
     }
 
     @Override

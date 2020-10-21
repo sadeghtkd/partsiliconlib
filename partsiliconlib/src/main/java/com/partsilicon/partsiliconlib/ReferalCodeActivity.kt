@@ -3,6 +3,7 @@ package com.partsilicon.partsiliconlib
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.partsilicon.partsiliconlib.classes.Setting
@@ -28,6 +29,7 @@ class ReferalCodeActivity : BaseActivity() {
         btn_ok.setOnClickListener(){
             //viewModel = ViewModelProviders.of (ReferalCodeActivity()).get(AppsViewModel::class.java)
             Invitation(this , txt_code.text.toString() , Setting().getIMEI(this))
+
         }
 
         btn_donthave.setOnClickListener(){
@@ -37,14 +39,16 @@ class ReferalCodeActivity : BaseActivity() {
     }
     lateinit var invited : InviteRes
     fun Invitation(context: Context, code:String, imei:String ){
-
+        progressBarRefCode.visibility = View.VISIBLE
         val listener = object  : MyCallback<InviteRes>(context){
             override fun onResponse(call: Call<InviteRes>, response: Response<InviteRes>) {
+                progressBarRefCode.visibility = View.GONE
                 if(response.isSuccessful) {
                     invited = response.body()!!
                     if (invited.status) {
                         Toast.makeText(context, resources.getString(R.string.msgsuccess), Toast.LENGTH_LONG).show()
                         SharedPreferencesUtility(context).setIsRefCodeEntered()
+                        finish()
                     }
                     else
                         Toast.makeText(context ,  resources.getString(R.string.msgfail) , Toast.LENGTH_LONG ).show()
