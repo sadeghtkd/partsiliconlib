@@ -33,10 +33,16 @@ class FeedBackActivity : BaseActivity() {
                     val intent = Intent(Intent.ACTION_VIEW)
                     intent.data = Uri.parse("jhoobin://comment?q=" + getPackageName())
                     startActivity(intent)
-                } else
+                } else if(market == "gplay")
+                {
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse("market://details?id=$packageName")
+                    startActivity(intent)
+                }
+                else
                     Toast.makeText(this, "market not defined", Toast.LENGTH_LONG).show()
             }catch (e:Exception){
-                Toast.makeText(this, "مارکت بر روی دستگاه نصب نیست", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Store app not installed", Toast.LENGTH_LONG).show()
             }
             SharedPreferencesUtility(this).setIsFirstLaunch()
             finish()

@@ -13,7 +13,7 @@
         android:name=".MyApp"
         android:theme="@style/AppTheme">
         <meta-data android:name="support_email" android:value="partsilicon@gmail.com" />
-        <meta-data android:name="market" android:value="charkhoneh" />
+        <meta-data android:name="market" android:value="gplay" />
 
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -18,6 +18,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions 'version'
+
+    productFlavors {
+        bazaar {
+            dimension = 'version'
+        }
+        gplay{
+            dimension = 'version'
+        }
+    }
 }
 
 dependencies {
