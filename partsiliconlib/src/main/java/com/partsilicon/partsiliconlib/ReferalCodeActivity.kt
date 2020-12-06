@@ -18,7 +18,7 @@ import retrofit2.Response
 
 class ReferalCodeActivity : BaseActivity() {
 
-    var userId:String =""
+    var userId:String? =""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_referal_code)
@@ -55,7 +55,7 @@ class ReferalCodeActivity : BaseActivity() {
                 }
             }
         }
-        AppsWebService(context).Invitation(code , imei , userId , listener  )
+        AppsWebService(context).Invitation(code , imei , userId ?: "" , listener  )
     }
 
 }

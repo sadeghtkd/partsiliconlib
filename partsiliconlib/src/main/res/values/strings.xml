@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">PartSiliconLib</string>
-    <string name="noConnection">ارتباط اینترنتی برقرار نیست، در صورت استفاده از VPN لطفا آنرا خاموش نمایید</string>
+    <string name="noConnection">ارتباط اینترنتی برقرار نیست</string>
     <string name="btnRetry">سعی مجدد</string>
     <string name="btnCancel">انصراف</string>
     <string name="feedback">بازخورد</string>
