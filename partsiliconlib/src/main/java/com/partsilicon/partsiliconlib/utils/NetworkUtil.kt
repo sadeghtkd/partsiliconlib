@@ -12,17 +12,20 @@ fun IsInternetAvailable(context: Context): Boolean {
     var result = false
     val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        cm?.run {
+        /*cm?.run {
             cm.getNetworkCapabilities(cm.activeNetwork)?.run {
                 result = when {
                     hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                    hasTransport(NetworkCapabilities.TRANSPORT_WIFI_AWARE) -> true
+                    hasTransport(NetworkCapabilities.TRANSPORT_LOWPAN) -> true
                     hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
                     hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
                     hasTransport(NetworkCapabilities.TRANSPORT_VPN) -> true
                     else -> false
                 }
             }
-        }
+        }*/
+        result = cm?.activeNetwork!= null && cm?.getNetworkCapabilities(cm.activeNetwork)!=null
     } else {
         cm?.run {
             cm.activeNetworkInfo?.run {
