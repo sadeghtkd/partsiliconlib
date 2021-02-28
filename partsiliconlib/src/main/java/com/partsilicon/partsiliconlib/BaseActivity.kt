@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import com.partsilicon.partsiliconlib.utils.IsInternetAvailable
+import com.partsilicon.partsiliconlib.utils.isInternetAvailable
 import io.github.inflationx.calligraphy3.CalligraphyConfig
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor
 import io.github.inflationx.viewpump.ViewPump
@@ -37,7 +38,7 @@ open class BaseActivity : AppCompatActivity(){
         checkInternet()
     }
     private fun  checkInternet(){
-        if(!IsInternetAvailable(this))
+        if(!isInternetAvailable())
         {
             try {
                 var dlg = AlertDialog.Builder(this)
