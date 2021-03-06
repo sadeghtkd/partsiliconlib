@@ -61,7 +61,7 @@ class ItemFragment : Fragment() {
 
                     var imei =  set.getIMEI(context)
                      viewModel.getApps(context , context.packageName.toString()
-                             + getMarketName(context), imei , userId)
+                             +"_"+ getMarketName(context), imei , userId)
                     viewModel.AppsList?.observe(viewLifecycleOwner,  Observer<AppsObj>{
                         adapter = inviteAdapter(context ,  it , listener)
                     })
