@@ -35,7 +35,8 @@ open class BaseActivity : AppCompatActivity(){
     }
     override fun onResume() {
         super.onResume()
-        checkInternet()
+        //checkInternet()
+        //بخاطر باگههایی که داشت چک کردن اینترنت غیرفعال شد
     }
     private fun  checkInternet(){
         if(!isInternetAvailable())

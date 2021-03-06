@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.partsilicon.partsiliconlib.classes.Setting
+import com.partsilicon.partsiliconlib.classes.getMarketName
 import com.partsilicon.partsiliconlib.pojo.AppsObj
 import com.partsilicon.partsiliconlib.viewmodels.AppsViewModel
 
@@ -59,7 +60,8 @@ class ItemFragment : Fragment() {
                     var set : Setting = Setting()
 
                     var imei =  set.getIMEI(context)
-                     viewModel.getApps(context , context.packageName.toString()  , imei , userId)
+                     viewModel.getApps(context , context.packageName.toString()
+                             + getMarketName(context), imei , userId)
                     viewModel.AppsList?.observe(viewLifecycleOwner,  Observer<AppsObj>{
                         adapter = inviteAdapter(context ,  it , listener)
                     })
