@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.partsilicon.partsiliconlib.R
 import com.partsilicon.partsiliconlib.notification.NotifFragment.OnListFragmentInteractionListener
 import com.partsilicon.partsiliconlib.notification.model.Notif
 import com.partsilicon.partsiliconlib.utils.toShamsi
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_notif_list_item.view.*
 
 class NotifRecyclerViewAdapter(
@@ -44,7 +44,8 @@ class NotifRecyclerViewAdapter(
         holder.btnAction.visibility = if(item.actionType == ActionTypes.NO_ACTION.value) View.GONE else View.VISIBLE
         //holder.item_visit_count.text = item.visitCount.toString()
         holder.item_date.text = toShamsi( item.createdAt)
-        Picasso.get().load(item.picUrl).into(holder.iv_item)
+        //Picasso.get().load(item.picUrl).into(holder.iv_item)
+        Glide.with(holder.iv_item).load(item.picUrl).into(holder.iv_item)
         holder.item_longText.text = item.longText
 
         with(holder.btnAction) {

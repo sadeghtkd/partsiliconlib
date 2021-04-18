@@ -14,10 +14,12 @@ import android.widget.RemoteViews
 import android.widget.TextView
 import androidx.core.app.NotificationCompat
 import androidx.core.content.res.ResourcesCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.NotificationTarget
 import com.partsilicon.partsiliconlib.R
 import com.partsilicon.partsiliconlib.notification.NotifListActivity
 import com.partsilicon.partsiliconlib.notification.model.Notif
-import com.squareup.picasso.Picasso
+//import com.squareup.picasso.Picasso
 
 
 /**
@@ -130,7 +132,9 @@ fun showCustomNotification(context: Context, notif: Notif) {
     else*/
     var notification = notificationBuilder.build()
         notificationManager.notify(notifId, notification)
-    Picasso.get().load(notif.picUrl).into(notificationView,R.id.ivIcon , notifId, notification)
+    var notifTarget = NotificationTarget(context,R.id.ivIcon,notificationView,notification,notifId)
+    Glide.with(context).asBitmap().load(notif.picUrl).into(notifTarget)
+    //Picasso.get().load(notif.picUrl).into(notificationView,R.id.ivIcon , notifId, notification)
 
         //Picasso.get().load(notif.picUrl).into(notificationBigView,R.id.ivBigPicture , notifId, notification)
 }
