@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseApp;
 import com.partsilicon.partsiliconlib.BaseActivity;
 import com.partsilicon.partsiliconlib.FeedBackActivity;
 import com.partsilicon.partsiliconlib.ItemFragment;
@@ -28,6 +29,7 @@ public class MainActivity extends BaseActivity implements ItemFragment.OnListFra
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle( String.valueOf( UtilsKt.GetVersionCode(this)));
+
         //if (!new SharedPreferencesUtility(this).isRefCodeEntered())
             //startActivity(new Intent(this , ReferalCodeActivity.class ));
         /*Intent intnt = new Intent(this , WebViewActivity.class);

@@ -58,7 +58,7 @@
 
     <Button
         android:id="@+id/btnAction"
-        style="@style/btnNotifStyle"
+            style="@style/btnNotifStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"

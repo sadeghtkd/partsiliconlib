@@ -10,6 +10,6 @@ public class MyApp extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        new Push().subscribeToPush(this);
+       // new Push().subscribeToPush(this);
     }
 }
