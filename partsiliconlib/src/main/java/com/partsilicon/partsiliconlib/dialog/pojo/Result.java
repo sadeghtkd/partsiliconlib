@@ -1,0 +1,177 @@
+
+package com.partsilicon.partsiliconlib.dialog.pojo;
+
+import java.util.List;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+
+public class Result {
+
+    @SerializedName("titles")
+    @Expose
+    private List<Title> titles = null;
+    @SerializedName("package")
+    @Expose
+    private String _package;
+    @SerializedName("createdAt")
+    @Expose
+    private String createdAt;
+    @SerializedName("updatedAt")
+    @Expose
+    private String updatedAt;
+    @SerializedName("market")
+    @Expose
+    private String market;
+    @SerializedName("version")
+    @Expose
+    private Integer version;
+    @SerializedName("description")
+    @Expose
+    private List<Description> description = null;
+    @SerializedName("photo")
+    @Expose
+    private List<Photo> photo = null;
+    @SerializedName("targetUrl")
+    @Expose
+    private String targetUrl;
+    @SerializedName("force")
+    @Expose
+    private Boolean force;
+    @SerializedName("expire")
+    @Expose
+    private Expire expire;
+    @SerializedName("buttonText")
+    @Expose
+    private List<ButtonText> buttonText = null;
+    @SerializedName("objectId")
+    @Expose
+    private String objectId;
+    @SerializedName("__type")
+    @Expose
+    private String type;
+    @SerializedName("className")
+    @Expose
+    private String className;
+
+    public List<Title> getTitles() {
+        return titles;
+    }
+
+    public void setTitles(List<Title> titles) {
+        this.titles = titles;
+    }
+
+    public String getPackage() {
+        return _package;
+    }
+
+    public void setPackage(String _package) {
+        this._package = _package;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getMarket() {
+        return market;
+    }
+
+    public void setMarket(String market) {
+        this.market = market;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+    public List<Description> getDescription() {
+        return description;
+    }
+
+    public void setDescription(List<Description> description) {
+        this.description = description;
+    }
+
+    public List<Photo> getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(List<Photo> photo) {
+        this.photo = photo;
+    }
+
+    public String getTargetUrl() {
+        return targetUrl;
+    }
+
+    public void setTargetUrl(String targetUrl) {
+        this.targetUrl = targetUrl;
+    }
+
+    public Boolean getForce() {
+        return force;
+    }
+
+    public void setForce(Boolean force) {
+        this.force = force;
+    }
+
+    public Expire getExpire() {
+        return expire;
+    }
+
+    public void setExpire(Expire expire) {
+        this.expire = expire;
+    }
+
+    public List<ButtonText> getButtonText() {
+        return buttonText;
+    }
+
+    public void setButtonText(List<ButtonText> buttonText) {
+        this.buttonText = buttonText;
+    }
+
+    public String getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+}
