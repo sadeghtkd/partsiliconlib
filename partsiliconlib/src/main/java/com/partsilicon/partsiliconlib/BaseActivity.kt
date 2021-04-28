@@ -1,10 +1,12 @@
 package com.partsilicon.partsiliconlib
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import com.partsilicon.partsiliconlib.utils.IsInternetAvailable
 import com.partsilicon.partsiliconlib.utils.isInternetAvailable
 import io.github.inflationx.calligraphy3.CalligraphyConfig
@@ -28,7 +30,9 @@ open class BaseActivity : AppCompatActivity(){
                         )
                         .build()
         )
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setNavigationBarColor(ContextCompat.getColor(this , R.color.colorPrimaryDark))
+        }
     }
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))

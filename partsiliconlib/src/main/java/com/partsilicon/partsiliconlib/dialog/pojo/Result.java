@@ -1,12 +1,15 @@
 
 package com.partsilicon.partsiliconlib.dialog.pojo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class Result {
+public class Result implements Parcelable {
 
     @SerializedName("titles")
     @Expose
@@ -53,6 +56,90 @@ public class Result {
     @SerializedName("className")
     @Expose
     private String className;
+    @SerializedName("actionType")
+    @Expose
+    private Integer actionType;
+
+    @SerializedName("dialogType")
+    @Expose
+    private Integer dialogType;
+    protected Result() {}
+
+    protected Result(Parcel in) {
+        _package = in.readString();
+        createdAt = in.readString();
+        updatedAt = in.readString();
+        market = in.readString();
+        if (in.readByte() == 0) {
+            version = null;
+        } else {
+            version = in.readInt();
+        }
+        targetUrl = in.readString();
+        byte tmpForce = in.readByte();
+        force = tmpForce == 0 ? null : tmpForce == 1;
+        objectId = in.readString();
+        type = in.readString();
+        className = in.readString();
+        if (in.readByte() == 0) {
+            actionType = null;
+        } else {
+            actionType = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            dialogType = null;
+        } else {
+            dialogType = in.readInt();
+        }
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(_package);
+        dest.writeString(createdAt);
+        dest.writeString(updatedAt);
+        dest.writeString(market);
+        if (version == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(version);
+        }
+        dest.writeString(targetUrl);
+        dest.writeByte((byte) (force == null ? 0 : force ? 1 : 2));
+        dest.writeString(objectId);
+        dest.writeString(type);
+        dest.writeString(className);
+        if (actionType == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(actionType);
+        }
+        if (dialogType == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(dialogType);
+        }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Result> CREATOR = new Creator<Result>() {
+        @Override
+        public Result createFromParcel(Parcel in) {
+            return new Result(in);
+        }
+
+        @Override
+        public Result[] newArray(int size) {
+            return new Result[size];
+        }
+    };
 
     public List<Title> getTitles() {
         return titles;
@@ -174,4 +261,18 @@ public class Result {
         this.className = className;
     }
 
+    public Integer getActionType() {
+        return actionType;
+    }
+
+    public void setActionType(Integer actionType) {
+        this.actionType = actionType;
+    }
+    public Integer getDialogType() {
+        return dialogType;
+    }
+
+    public void setDialogType(Integer dialogType) {
+        this.dialogType = dialogType;
+    }
 }

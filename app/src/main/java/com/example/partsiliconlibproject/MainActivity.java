@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-
+import com.partsilicon.partsiliconlib.utils.UtilsKt;
 import com.partsilicon.partsiliconlib.BaseActivity;
 import com.partsilicon.partsiliconlib.dialog.DialogActivity;
 import com.partsilicon.partsiliconlib.FeedBackActivity;
 import com.partsilicon.partsiliconlib.ItemFragment;
 import com.partsilicon.partsiliconlib.utils.SharedPreferencesUtility;
-import com.partsilicon.partsiliconlib.utils.UtilsKt;
 
+import static com.partsilicon.partsiliconlib.utils.UtilsKt.getDialog;
 import static com.partsilicon.partsiliconlib.utils.UtilsUIKt.setUnreadActionMenu;
 
 public class MainActivity extends BaseActivity implements ItemFragment.OnListFragmentInteractionListener {
@@ -38,7 +38,8 @@ public class MainActivity extends BaseActivity implements ItemFragment.OnListFra
         startActivity(refCodeIntent);
         */
         // تست کد معرف
-        startActivity(new Intent(this , DialogActivity.class));
+        //startActivity(new Intent(this , DialogActivity.class));
+        getDialog(this) ;
     }
 
     @Override

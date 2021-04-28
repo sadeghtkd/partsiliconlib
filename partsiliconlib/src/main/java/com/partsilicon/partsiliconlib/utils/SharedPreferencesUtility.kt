@@ -8,6 +8,7 @@ class SharedPreferencesUtility(private val context: Context) {
     private val preferenceFileKey = "PsiLib"
     private val preferenceIsFirstLaunchKey = "FirstLaunch"
     private val preferenceIsRefCodeEnteredKey = "RefCodeEntered"
+    private val preferenceBeginDialog = "BeginDialog"
 
     fun setUnreadCount(count:Int) {
         val editor = context.getSharedPreferences(preferenceFileKey, MODE_PRIVATE).edit()
@@ -18,6 +19,17 @@ class SharedPreferencesUtility(private val context: Context) {
     fun getUnreadCount(): Int {
         return context.getSharedPreferences(preferenceFileKey, MODE_PRIVATE)
                 .getInt("unread_count", 0)
+    }
+
+    fun setDialogId(dialog_id:String) {
+        val editor = context.getSharedPreferences(preferenceBeginDialog , MODE_PRIVATE).edit()
+        editor.putString("dialog_id", dialog_id)
+        editor.apply()
+    }
+
+    fun getDialogId(): String? {
+        return context.getSharedPreferences(preferenceBeginDialog, MODE_PRIVATE)
+                .getString("dialog_id", "0")
     }
 
     fun setIsFirstLaunch() {

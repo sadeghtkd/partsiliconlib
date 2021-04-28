@@ -7,9 +7,15 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.util.Log
+import com.partsilicon.partsiliconlib.dialog.DialogActivity
+import com.partsilicon.partsiliconlib.dialog.pojo.DialogRes
+import com.partsilicon.partsiliconlib.dialog.webservice.DialogWebservices
 import com.partsilicon.partsiliconlib.notification.ActionTypes
 import com.partsilicon.partsiliconlib.notification.NotifListActivity
 import com.partsilicon.partsiliconlib.notification.model.Notif
+import com.partsilicon.partsiliconlib.notification.webservice.MyCallback
+import retrofit2.Call
+import retrofit2.Response
 import saman.zamani.persiandate.PersianDateFormat
 import java.lang.Exception
 
@@ -77,4 +83,26 @@ fun GetAboutUSPage(context: Context):String{
             intent = (Intent(context , NotifListActivity::class.java))
         }
         return intent
+    }
+
+    fun getDialog(context: Context)
+    {
+        DialogWebservices(context).getDialogs(object : MyCallback<DialogRes>(context) {
+            override fun onResponse(call: Call<DialogRes>, response: Response<DialogRes>) {
+                super.onResponse(call, response)
+                var dr = DialogRes()
+                if (response.isSuccessful) {
+                    dr = response.body()!!
+                    if (dr.result != null) {
+                       var inn =  Intent(context, DialogActivity::class.java)
+                        inn.putExtra("res" , dr.result)
+                        context.startActivity(inn)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<DialogRes>, t: Throwable) {
+                super.onFailure(call, t)
+            }
+        })
     }
