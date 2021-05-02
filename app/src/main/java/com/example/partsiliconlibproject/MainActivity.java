@@ -39,6 +39,8 @@ public class MainActivity extends BaseActivity implements ItemFragment.OnListFra
         */
         // تست کد معرف
         //startActivity(new Intent(this , DialogActivity.class));
+
+        // دیالوگ آپدیت - شروع برنامه
         getDialog(this) ;
     }
 

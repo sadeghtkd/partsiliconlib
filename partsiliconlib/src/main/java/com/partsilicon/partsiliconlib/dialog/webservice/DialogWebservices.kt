@@ -10,6 +10,7 @@ import com.partsilicon.partsiliconlib.dialog.pojo.DialogRes
 import com.partsilicon.partsiliconlib.notification.model.NotifList
 import com.partsilicon.partsiliconlib.notification.webservice.APP_ID
 import com.partsilicon.partsiliconlib.notification.webservice.MyCallback
+import com.partsilicon.partsiliconlib.utils.GetVersionCode
 import com.partsilicon.partsiliconlib.utils.SharedPreferencesUtility
 import java.util.*
 
@@ -23,7 +24,7 @@ class DialogWebservices(val context: Context) {
        var req = DialogReq()
         req.`package` = context.packageName //"test"
         req.market =   getMarketName(context) //"gplay"
-        req.version =   BuildConfig.VERSION_CODE //0
+        req.version =   GetVersionCode(context).toInt() //0
         req.lastSeenId = SharedPreferencesUtility(context).getDialogId()
         req.deviceId = Setting().getIMEI(context)
         req.language = Locale.getDefault().getLanguage()
