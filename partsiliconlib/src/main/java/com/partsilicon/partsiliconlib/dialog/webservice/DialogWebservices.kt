@@ -20,17 +20,13 @@ class DialogWebservices(val context: Context) {
     fun getDialogs( callback: MyCallback<DialogRes>) {
         val ws = RetrofitClientInstance.getRetrofitInstance().create(DialogServices::class.java)
 
- /*       val call = ws.getDialogs(APP_ID,"{\"package\":\"${context.packageName}\"}" ,"{\"market\":\" ${getMarketName(context)}\"}"
-                    , "{\"version\":0 }" )*/
-                // \"${BuildConfig.VERSION_CODE}\"}"  )
-        // val call = ws.getDialogs(APP_ID ,"{\"package\":\"test\"}" ,  "{\"market\":\" ${getMarketName(context)}\"}" , "{\"version\":0 }" )
        var req = DialogReq()
-        req.`package` ="test" // context.packageName //
-        req.market ="gplay" //  getMarketName(context) //
-        req.version = 0  // BuildConfig.VERSION_CODE //
-/*        req.lastSeenId = SharedPreferencesUtility(context).getDialogId()
+        req.`package` = context.packageName //"test"
+        req.market =   getMarketName(context) //"gplay"
+        req.version =   BuildConfig.VERSION_CODE //0
+        req.lastSeenId = SharedPreferencesUtility(context).getDialogId()
         req.deviceId = Setting().getIMEI(context)
-        req.language = Locale.getDefault().getLanguage()*/
+        req.language = Locale.getDefault().getLanguage()
 
         val call = ws.getDialogs(APP_ID ,req )
         call.enqueue(callback)

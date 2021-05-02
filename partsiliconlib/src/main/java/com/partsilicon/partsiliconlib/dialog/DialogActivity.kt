@@ -33,7 +33,9 @@ class DialogActivity : AppCompatActivity() {
             setFinishOnTouchOutside(false)
             isForce = true
         }
-        
+        if (result.dialogType != 1)
+            SharedPreferencesUtility(this).setDialogId(result.objectId)
+
         btn_action.setOnClickListener() {
             if (result.actionType == 1) {
                 var inn = Intent("android.intent.action.VIEW")
@@ -47,8 +49,8 @@ class DialogActivity : AppCompatActivity() {
                 } catch (ignored: ClassNotFoundException) {
                 }
             }
-            if (result.dialogType != 1)
-                SharedPreferencesUtility(this).setDialogId(result.objectId)
+            if (!isForce)
+                finish()
         }
 
 

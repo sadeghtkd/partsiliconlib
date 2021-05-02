@@ -2,10 +2,13 @@
 package com.partsilicon.partsiliconlib.dialog.pojo;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Expire {
+public class Expire implements Parcelable {
 
     @SerializedName("__type")
     @Expose
@@ -13,6 +16,34 @@ public class Expire {
     @SerializedName("iso")
     @Expose
     private String iso;
+
+    protected Expire(Parcel in) {
+        type = in.readString();
+        iso = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(type);
+        dest.writeString(iso);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Expire> CREATOR = new Creator<Expire>() {
+        @Override
+        public Expire createFromParcel(Parcel in) {
+            return new Expire(in);
+        }
+
+        @Override
+        public Expire[] newArray(int size) {
+            return new Expire[size];
+        }
+    };
 
     public String getType() {
         return type;

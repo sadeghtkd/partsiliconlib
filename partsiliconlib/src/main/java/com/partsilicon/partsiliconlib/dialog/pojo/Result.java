@@ -65,7 +65,9 @@ public class Result implements Parcelable {
     private Integer dialogType;
     protected Result() {}
 
+
     protected Result(Parcel in) {
+        titles = in.createTypedArrayList(Title.CREATOR);
         _package = in.readString();
         createdAt = in.readString();
         updatedAt = in.readString();
@@ -75,9 +77,13 @@ public class Result implements Parcelable {
         } else {
             version = in.readInt();
         }
+        description = in.createTypedArrayList(Description.CREATOR);
+        photo = in.createTypedArrayList(Photo.CREATOR);
         targetUrl = in.readString();
         byte tmpForce = in.readByte();
         force = tmpForce == 0 ? null : tmpForce == 1;
+        expire = in.readParcelable(Expire.class.getClassLoader());
+        buttonText = in.createTypedArrayList(ButtonText.CREATOR);
         objectId = in.readString();
         type = in.readString();
         className = in.readString();
@@ -95,6 +101,7 @@ public class Result implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeTypedList(titles);
         dest.writeString(_package);
         dest.writeString(createdAt);
         dest.writeString(updatedAt);
@@ -105,8 +112,12 @@ public class Result implements Parcelable {
             dest.writeByte((byte) 1);
             dest.writeInt(version);
         }
+        dest.writeTypedList(description);
+        dest.writeTypedList(photo);
         dest.writeString(targetUrl);
         dest.writeByte((byte) (force == null ? 0 : force ? 1 : 2));
+        dest.writeParcelable(expire, flags);
+        dest.writeTypedList(buttonText);
         dest.writeString(objectId);
         dest.writeString(type);
         dest.writeString(className);

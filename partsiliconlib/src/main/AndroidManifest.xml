@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application>
-        <activity android:name=".dialog.DialogActivity" android:theme="@style/AppTheme.Dialog"></activity>
+        <activity android:name=".dialog.DialogActivity" android:theme="@style/AppTheme.Material">
+        </activity>
         <activity
             android:name=".ReferalCodeActivity"
             android:theme="@style/AppTheme.Dialog" />

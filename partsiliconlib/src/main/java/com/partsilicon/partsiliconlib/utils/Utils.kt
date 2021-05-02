@@ -93,16 +93,17 @@ fun GetAboutUSPage(context: Context):String{
                 var dr = DialogRes()
                 if (response.isSuccessful) {
                     dr = response.body()!!
-                    if (dr.result != null) {
-                       var inn =  Intent(context, DialogActivity::class.java)
-                        inn.putExtra("res" , dr.result)
+                    if (dr.result != null && dr.result.toString() != "err" ) {
+                        var inn =  Intent(context, DialogActivity::class.java)
+                        var res:com.partsilicon.partsiliconlib.dialog.pojo.Result =  dr.result
+                        inn.putExtra("res" , res)
                         context.startActivity(inn)
                     }
                 }
             }
 
             override fun onFailure(call: Call<DialogRes>, t: Throwable) {
-                super.onFailure(call, t)
+                // super.onFailure(call, t)  در صورت خطا نیازی نیست به کاربر چیزی نشان بدهیم
             }
         })
     }

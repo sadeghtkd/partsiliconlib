@@ -29,7 +29,7 @@ class SharedPreferencesUtility(private val context: Context) {
 
     fun getDialogId(): String? {
         return context.getSharedPreferences(preferenceBeginDialog, MODE_PRIVATE)
-                .getString("dialog_id", "0")
+                .getString("dialog_id", "")
     }
 
     fun setIsFirstLaunch() {
