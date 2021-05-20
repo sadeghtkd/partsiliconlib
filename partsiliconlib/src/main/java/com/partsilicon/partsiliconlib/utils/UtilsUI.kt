@@ -99,11 +99,12 @@ fun showCustomNotification(context: Context, notif: Notif) {
     notificationView.setTextViewText(R.id.tvTitle , notif.title)
     notificationView.setTextViewText(R.id.tvText , notif.shortDesc)
 
+
     //val notificationBigView = RemoteViews(context.packageName , R.layout.notification_big_view)
 
     val notificationBuilder = NotificationCompat.Builder(context, channelId)
     notificationBuilder.setAutoCancel(true)
-            .setDefaults(Notification.DEFAULT_ALL)
+            ///.setDefaults(Notification.DEFAULT_ALL)   // commented to check
             .setWhen(System.currentTimeMillis())
             .setSmallIcon(R.drawable.info)
             .setTicker(notif.shortDesc)
