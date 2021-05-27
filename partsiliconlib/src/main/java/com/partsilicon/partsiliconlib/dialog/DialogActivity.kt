@@ -23,12 +23,16 @@ class DialogActivity : AppCompatActivity() {
 
         var result : com.partsilicon.partsiliconlib.dialog.pojo.Result
         result = intent.getParcelableExtra("res")
+        if(result == null)
+            finish()
 
         tv_title.setText(result.titles.first().value)
         tv_description.setText(result.description.first().value)
         btn_action.setText(result.buttonText.first().value)
-        iv_photo.setImageURI(Uri.parse(result.photo.first().url))
-        Glide.with(iv_photo).load(result.photo.first().url).into(iv_photo)
+        if(result.photo.isNotEmpty()) {
+            iv_photo.setImageURI(Uri.parse(result.photo.first().url))
+            Glide.with(iv_photo).load(result.photo.first().url).into(iv_photo)
+        }
         if (result.force) {
             setFinishOnTouchOutside(false)
             isForce = true
