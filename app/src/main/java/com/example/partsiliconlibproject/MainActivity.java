@@ -19,7 +19,7 @@ public class MainActivity extends BaseActivity implements ItemFragment.OnListFra
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.notif_layout);
         setTitle( String.valueOf( UtilsKt.GetVersionCode(this)));
         // تست کد معرف
 

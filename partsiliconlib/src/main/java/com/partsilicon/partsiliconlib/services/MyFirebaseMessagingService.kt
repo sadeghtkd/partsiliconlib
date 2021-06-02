@@ -40,9 +40,24 @@ open class MyFirebaseMessagingService: FirebaseMessagingService() {
                 val url = remoteMessage.data["url"]
                 val title = remoteMessage.data["title"]
                 val msg = remoteMessage.data["msg"]
+
+                val image = remoteMessage.data["image"]
+                val banner = remoteMessage.data["banner"]
+                val backgroundColor = remoteMessage.data["backgroundColor"]
+                val textColor = remoteMessage.data["textColor"]
                 if (url != null)
-                    showUrlNotification(this, url, title ?: "", msg ?: "", "")
-            }
+                    NotifWebservices(this).getNotifications(object : MyCallback<NotifList>(this){
+                        override fun onFailure(call: Call<NotifList>, t: Throwable) {
+                        }
+                        override fun onResponse(call: Call<NotifList>, response: Response<NotifList>) {
+                            if(response.isSuccessful)
+                            {
+                                showUrlNotification(this@MyFirebaseMessagingService.applicationContext , url, title ?: "", msg ?: "", "" , image?:"" , banner?:"" , backgroundColor?:"" , textColor?:"" )
+
+                            }
+                        }
+                    })
+                 }
         }else
             super.onMessageReceived(remoteMessage)
     }

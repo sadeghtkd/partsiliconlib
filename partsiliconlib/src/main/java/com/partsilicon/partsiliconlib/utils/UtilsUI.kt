@@ -1,24 +1,28 @@
 package com.partsilicon.partsiliconlib.utils
 
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.view.View
 import android.widget.RemoteViews
 import android.widget.TextView
+import androidx.annotation.Nullable
 import androidx.core.app.NotificationCompat
-import androidx.core.content.res.ResourcesCompat
+import androidx.transition.Transition
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.NotificationTarget
 import com.partsilicon.partsiliconlib.R
 import com.partsilicon.partsiliconlib.notification.NotifListActivity
 import com.partsilicon.partsiliconlib.notification.model.Notif
+
+
 //import com.squareup.picasso.Picasso
 
 
@@ -43,6 +47,10 @@ fun showNotification(
         title: String,
         text: String,
         info: String,
+        image: String,
+        banner: String,
+        backgroundColor: String,
+        textColor: String,
         intent: PendingIntent?
 ) {
     val notificationManager =
@@ -59,9 +67,21 @@ fun showNotification(
         //notificationChannel.enableVibration(true);
         notificationManager.createNotificationChannel(notificationChannel)
     }
+
+    val notificationLayout = RemoteViews(context.packageName , R.layout.notif_layout )
+    notificationLayout.setTextViewText(R.id.notification_text ,text )
+    notificationLayout.setTextViewText(R.id.notification_title ,title )
+    if ( ! textColor.isNullOrEmpty()) {
+        notificationLayout.setTextColor(R.id.notification_title, Color.parseColor(textColor))
+        notificationLayout.setTextColor(R.id.notification_text, Color.parseColor(textColor))
+    }
+    if (!backgroundColor.isNullOrEmpty())
+        notificationLayout.setInt(R.id.custom_notification , "setBackgroundColor" , Color.parseColor(backgroundColor)   )
+
     val notificationBuilder = NotificationCompat.Builder(context, ChannelId)
     notificationBuilder.setAutoCancel(true)
-            .setDefaults(Notification.DEFAULT_ALL)
+            ///.setDefaults(Notification.DEFAULT_ALL)
+            .setCustomContentView(notificationLayout)
             .setWhen(System.currentTimeMillis())
             .setSmallIcon(R.drawable.info)
             .setTicker(text)
@@ -69,10 +89,26 @@ fun showNotification(
             .setContentTitle(title)
             .setContentText(text)
             .setContentInfo(info)
+
+
     if (intent != null)
         notificationBuilder.setContentIntent(intent)
-    notificationManager.notify(1, notificationBuilder.build())
+
+    notificationManager.notify(1,notificationBuilder.build() )
+    // notificationLayout.setImageViewResource(R.id.small_icon  , R.drawable.ic_share)
+
+    if (!image.isNullOrEmpty()) {
+        ///notificationLayout.setImageViewUri(R.id.small_icon  ,Uri.parse(image1) )
+        val notifId = 1
+        var notification = notificationBuilder.build()
+        notificationManager.notify(notifId, notification)
+        var notifTarget = NotificationTarget(context, R.id.small_icon, notificationLayout, notification, notifId)
+
+        Glide.with(context).asBitmap().load(image).into(notifTarget)
+
+    }
 }
+
 
 fun showCustomNotification(context: Context, notif: Notif) {
 
@@ -105,16 +141,20 @@ fun showCustomNotification(context: Context, notif: Notif) {
     val notificationBuilder = NotificationCompat.Builder(context, channelId)
     notificationBuilder.setAutoCancel(true)
             ///.setDefaults(Notification.DEFAULT_ALL)   // commented to check
+            .setCustomContentView(notificationView)
             .setWhen(System.currentTimeMillis())
             .setSmallIcon(R.drawable.info)
             .setTicker(notif.shortDesc)
             .setContentTitle(notif.title)
             .setContentText(notif.shortDesc)
-            .setCustomContentView(notificationView)
+
+
+
     //if(notif.displayType ==  DisplayTypes.Big.value)
             //notificationBuilder.setCustomBigContentView(notificationBigView)
     if (resultPendingIntent != null)
         notificationBuilder.setContentIntent(resultPendingIntent)
+
     val notifId = notif.objectId.hashCode()
 
     /*if(notif.displayType ==  DisplayTypes.Big.value)
@@ -135,12 +175,13 @@ fun showCustomNotification(context: Context, notif: Notif) {
         notificationManager.notify(notifId, notification)
     var notifTarget = NotificationTarget(context,R.id.ivIcon,notificationView,notification,notifId)
     Glide.with(context).asBitmap().load(notif.picUrl).into(notifTarget)
-    //Picasso.get().load(notif.picUrl).into(notificationView,R.id.ivIcon , notifId, notification)
 
-        //Picasso.get().load(notif.picUrl).into(notificationBigView,R.id.ivBigPicture , notifId, notification)
 }
 
-fun showUrlNotification(context: Context, url: String, title: String, text: String, info: String) {
+fun showUrlNotification(context: Context, url: String, title: String, text: String, info: String , image: String,
+                        banner: String,
+                        backgroundColor: String,
+                        textColor: String) {
     val resultIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
     val resultPendingIntent =
             PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -152,6 +193,10 @@ fun showUrlNotification(context: Context, url: String, title: String, text: Stri
             title,
             text,
             info,
+            image ,
+            banner,
+            backgroundColor,
+            textColor,
             resultPendingIntent
     )
 }
