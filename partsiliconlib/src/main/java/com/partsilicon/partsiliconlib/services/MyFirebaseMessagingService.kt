@@ -1,18 +1,16 @@
 package com.partsilicon.partsiliconlib.services
 
+
+import android.os.Handler
+import com.bumptech.glide.Glide
+
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.view.View
-import com.partsilicon.partsiliconlib.notification.db.AppDatabase
 import com.partsilicon.partsiliconlib.notification.db.saveNotifToDb
-import com.partsilicon.partsiliconlib.notification.model.Notif
 import com.partsilicon.partsiliconlib.notification.model.NotifList
 import com.partsilicon.partsiliconlib.notification.webservice.MyCallback
 import com.partsilicon.partsiliconlib.notification.webservice.NotifWebservices
 import com.partsilicon.partsiliconlib.utils.showUrlNotification
-import me.leolin.shortcutbadger.ShortcutBadger
 import retrofit2.Call
 import retrofit2.Response
 
@@ -45,19 +43,21 @@ open class MyFirebaseMessagingService: FirebaseMessagingService() {
                 val banner = remoteMessage.data["banner"]
                 val backgroundColor = remoteMessage.data["backgroundColor"]
                 val textColor = remoteMessage.data["textColor"]
-                if (url != null)
-                    NotifWebservices(this).getNotifications(object : MyCallback<NotifList>(this){
-                        override fun onFailure(call: Call<NotifList>, t: Throwable) {
-                        }
-                        override fun onResponse(call: Call<NotifList>, response: Response<NotifList>) {
-                            if(response.isSuccessful)
-                            {
-                                showUrlNotification(this@MyFirebaseMessagingService.applicationContext , url, title ?: "", msg ?: "", "" , image?:"" , banner?:"" , backgroundColor?:"" , textColor?:"" )
 
-                            }
-                        }
-                    })
-                 }
+
+                if (url != null) {
+                    var  mainHandler:Handler = Handler(this.getMainLooper());
+
+                    var myRunnable = object  : Runnable {
+                        override fun run() {
+                            showUrlNotification(this@MyFirebaseMessagingService.applicationContext, url, title
+                                    ?: "", msg ?: "", "", image ?: "", banner ?: "", backgroundColor
+                                    ?: "", textColor ?: "")
+                        } // This is your code
+                    };
+                    mainHandler.post(myRunnable)
+                }
+            }
         }else
             super.onMessageReceived(remoteMessage)
     }

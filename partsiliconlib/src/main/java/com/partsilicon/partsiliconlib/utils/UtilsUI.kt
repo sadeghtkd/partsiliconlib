@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.net.Uri
@@ -13,11 +14,10 @@ import android.os.Build
 import android.view.View
 import android.widget.RemoteViews
 import android.widget.TextView
-import androidx.annotation.Nullable
 import androidx.core.app.NotificationCompat
-import androidx.transition.Transition
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.NotificationTarget
+import com.bumptech.glide.request.target.SimpleTarget
 import com.partsilicon.partsiliconlib.R
 import com.partsilicon.partsiliconlib.notification.NotifListActivity
 import com.partsilicon.partsiliconlib.notification.model.Notif
@@ -79,6 +79,8 @@ fun showNotification(
         notificationLayout.setInt(R.id.custom_notification , "setBackgroundColor" , Color.parseColor(backgroundColor)   )
 
     val notificationBuilder = NotificationCompat.Builder(context, ChannelId)
+    //var B : Bitmap = BitmapFactory.decodeResource(context.resources ,  R.drawable.ic_wifi_off_24dp)
+
     notificationBuilder.setAutoCancel(true)
             ///.setDefaults(Notification.DEFAULT_ALL)
             .setCustomContentView(notificationLayout)
@@ -89,6 +91,8 @@ fun showNotification(
             .setContentTitle(title)
             .setContentText(text)
             .setContentInfo(info)
+            .setCustomBigContentView(notificationLayout)
+            .setStyle(NotificationCompat.BigPictureStyle())
 
 
     if (intent != null)
@@ -103,9 +107,20 @@ fun showNotification(
         var notification = notificationBuilder.build()
         notificationManager.notify(notifId, notification)
         var notifTarget = NotificationTarget(context, R.id.small_icon, notificationLayout, notification, notifId)
-
         Glide.with(context).asBitmap().load(image).into(notifTarget)
+    }
+    if (!banner.isNullOrEmpty())
+    {
+        val notifId = 1
+        var notification = notificationBuilder.build()
+        notificationManager.notify(notifId, notification)
+        var notifTarget = NotificationTarget(context, R.id.iv_banner, notificationLayout, notification, notifId)
+        Glide.with(context).asBitmap().load(banner).into(notifTarget)
 
+
+
+/*        notificationBuilder.setStyle(NotificationCompat.BigPictureStyle()
+                .bigPicture(bitmap))*/
     }
 }
 
@@ -136,7 +151,7 @@ fun showCustomNotification(context: Context, notif: Notif) {
     notificationView.setTextViewText(R.id.tvText , notif.shortDesc)
 
 
-    //val notificationBigView = RemoteViews(context.packageName , R.layout.notification_big_view)
+    val notificationBigView = RemoteViews(context.packageName , R.layout.notification_big_view)
 
     val notificationBuilder = NotificationCompat.Builder(context, channelId)
     notificationBuilder.setAutoCancel(true)
