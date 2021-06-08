@@ -75,9 +75,10 @@ fun showNotification(
         notificationLayout.setTextColor(R.id.notification_title, Color.parseColor(textColor))
         notificationLayout.setTextColor(R.id.notification_text, Color.parseColor(textColor))
     }
-    if (!backgroundColor.isNullOrEmpty())
-        notificationLayout.setInt(R.id.custom_notification , "setBackgroundColor" , Color.parseColor(backgroundColor)   )
-
+    if (!backgroundColor.isNullOrEmpty()) {
+        notificationLayout.setInt(R.id.titlebar, "setBackgroundColor", Color.parseColor(backgroundColor))
+        notificationLayout.setInt(R.id.notification_text,  "setBackgroundColor", Color.parseColor(backgroundColor))
+    }
     val notificationBuilder = NotificationCompat.Builder(context, ChannelId)
     //var B : Bitmap = BitmapFactory.decodeResource(context.resources ,  R.drawable.ic_wifi_off_24dp)
 
